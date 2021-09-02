@@ -9,6 +9,7 @@ You can directly jump into deployment step if you do not need to modify the appl
 docker build -t vazravasu/shopping-cart-akka-db ./docker_images/postgres
 ### Create image for shopping cart 
 mvn clean package docker:build
+
 docker tag shopping-cart-service:latest <new name>
 
 ## Deploy
