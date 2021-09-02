@@ -1,0 +1,8 @@
+shopping_cart/config/SwaggerConfiguration.class
+shopping_cart/ExceptionHandlers/ExceptionHandlers.class
+shopping_cart/query/PopularityProjector.class
+shopping_cart/ShoppingCartApplication.class
+shopping_cart/command/ShoppingCart.class
+shopping_cart/gui/ShoppingCartController.class
+shopping_cart/ExceptionHandlers/ResponseError.class
+shopping_cart/command/ShoppingCartDTO.class
