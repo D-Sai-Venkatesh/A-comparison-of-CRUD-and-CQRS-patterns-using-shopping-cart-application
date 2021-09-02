@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: shopping-1
+  labels:
+    name: postgres
+spec:
+  selector:
+    app: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: shopping-1
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: shopping-cart
+  POSTGRES_USER: shopping-cart
+  POSTGRES_PASSWORD: shopping-cart
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+  namespace: shopping-1
+  labels:
+    app: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: shopping-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: vazravasu/shopping-cart-akka-db:latest
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: postgres-database-storage
+              mountPath: /var/lib/pgsql/data
+
+      volumes:
+        - name: postgres-database-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
+
+---
