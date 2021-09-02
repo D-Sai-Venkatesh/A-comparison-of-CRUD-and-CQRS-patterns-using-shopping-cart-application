@@ -19,17 +19,24 @@ kubectl create namespace shopping-1
 
 ### Change default kubectl namespace
 kubectl config set-context --current --namespace=shopping-1
+  
 kubectl apply -f ./kubernetes/db.yml
+
 kubectl apply -f ./kubernetes/zookeeper.yml
+
 kubectl apply -f ./kubernetes/kafka.yml
+
 kubectl apply -f ./kubernetes/my-service.yml
 
 ## Expose
 kubectl expose deployment shopping --type=LoadBalancer --name=my-service  
   
-## Testing 
+## Intercting with the application 
+For this we have to install grpcurl from https://github.com/fullstorydev/grpcurl.
 plase replase the ip address of the external endpoint of the loadbalancer 
 
 grpcurl -d '{"cartId":"cart1", "items":[{"itemId":"socks", "quantity":3}, {"itemId":"t-shirt", "quantity":2}]}' -plaintext <ip-address> shoppingorder.ShoppingOrderService.Order
+
 grpcurl -d '{"cartId":"cart1", "itemId":"scissors", "quantity":1}' -plaintext <ip-address> shoppingcart.ShoppingCartService.AddItem
+
 grpcurl -d '{"cartId":"cart1"}' -plaintext <ip-address> shoppingcart.ShoppingCartService.Checkout
