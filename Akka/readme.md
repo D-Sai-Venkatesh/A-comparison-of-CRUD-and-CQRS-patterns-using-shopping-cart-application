@@ -1,5 +1,5 @@
 # Akka Impimentation of shopping Cart
-This implementation has been borrowed from https://developer.lightbend.com/docs/akka-platform-guide/microservices-tutorial/index.html
+This implementation has been borrowed from https://developer.lightbend.com/docs/akka-platform-guide/microservices-tutorial/index.html.
 We have added yaml scripts to deploy this shopping cart on kubernetes
 
 ## Create Docker Images
