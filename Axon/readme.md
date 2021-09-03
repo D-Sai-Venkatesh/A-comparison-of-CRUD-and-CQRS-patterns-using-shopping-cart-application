@@ -7,11 +7,14 @@ mvn compile jib:dockerBuild -Dimage=new_image_name
 ```
 ## Deploy
 Install kustomize from https://kubectl.docs.kubernetes.io/installation/kustomize/binaries/
-
+```
 kubectl create namespace axon
-
+```
+```
 kubectl config set-context --current --namespace=axon
-
+```
+```
 kustomize build .k8s/base/deploy | kubectl apply -f -
-  
-I will add resources I have used for this project.
+```
+
+Resources for this project will be added here soon.
