@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: crud-shopping
+  name: crud-shopping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-shopping
+  template:
+    metadata:
+      labels:
+        app: crud-shopping
+    spec:
+      containers:
+        - image: vazravasu/shopping-cart-crud-service:latest
+          name: crud-shopping
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: crud-shopping-config
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 15
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+

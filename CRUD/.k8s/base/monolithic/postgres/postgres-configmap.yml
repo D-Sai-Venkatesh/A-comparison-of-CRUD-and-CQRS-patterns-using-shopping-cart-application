@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config-demo
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: crud-shopping
+  POSTGRES_USER: demouser
+  POSTGRES_PASSWORD: thepassword
