@@ -14,7 +14,7 @@ kubectl create namespace crud
 kubectl config set-context --current --namespace=crud
 ```
 ```
-kustomize build .k8s/base/monolithic | kubectl apply -f -
+./kustomize build .k8s/base/monolithic | kubectl apply -f -
 ```
 ## Interacting with application 
 use swagger GUI on localhost 8080. If this is not working please check weather loadbalancer has been correctly exposed in kubernetes.
