@@ -1,7 +1,7 @@
 # Akka Impimentation of shopping Cart
 
 ## Build docker image 
-If you want to modify the code then plase create a docker image with the foloowing command and update image name accordingly in kubernetes script. Otherwise just run kubernetes script it will automatically download images from my decker repository.
+If you want to modify the code then plase create a docker image with the folowing command and update image name accordingly in kubernetes script. Otherwise just run kubernetes script it will automatically download images from my decker repository.
 
 mvn compile jib:dockerBuild -Dimage=<image name>
 
