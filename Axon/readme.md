@@ -19,4 +19,4 @@ kustomize build .k8s/base/deploy | kubectl apply -f -
 ## Interacting with application 
 use swagger GUI on localhost 8080. If this is not working please check weather loadbalancer has been correctly exposed in kubernetes.
 
-Resources for this project will be added here soon.
+This implementation is the result of modification and conversion of the implimentation given here https://docs.axoniq.io/reference-guide/getting-started/quick-start 
